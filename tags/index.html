@@ -299,7 +299,7 @@ queueMicrotask(() => {
     const runTwikoo = () => {
       twikoo.getRecentComments({
         envId: 'https://twikoo-delta-jade.vercel.app',
-        region: 'cn',
+        region: '',
         pageSize: 6,
         includeReply: true
       }).then(function (res) {
@@ -324,7 +324,7 @@ queueMicrotask(() => {
     if (typeof twikoo === 'object') {
       runTwikoo()
     } else {
-      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+      getScript('https://cdn.cbd.int/twikoo@1.6.41/dist/twikoo.all.min.js').then(runTwikoo)
     }
   }
 

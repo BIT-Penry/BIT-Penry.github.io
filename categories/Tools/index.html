@@ -280,7 +280,7 @@ queueMicrotask(() => {
     twikoo.init(Object.assign({
       el: '#twikoo-wrap',
       envId: 'https://twikoo-delta-jade.vercel.app',
-      region: 'cn',
+      region: '',
       onCommentLoaded: () => {
         anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
       }
@@ -289,7 +289,7 @@ queueMicrotask(() => {
 
   const loadTwikoo = () => {
     if (typeof twikoo === 'object') setTimeout(runFn,0)
-    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.41/dist/twikoo.all.min.js').then(runFn)
   }
 
   const getCount = () => {
@@ -297,7 +297,7 @@ queueMicrotask(() => {
     if(!countELement) return
     twikoo.getCommentsCount({
       envId: 'https://twikoo-delta-jade.vercel.app',
-      region: 'cn',
+      region: '',
       urls: [window.location.pathname],
       includeReply: false
     }).then(res => {
@@ -378,7 +378,7 @@ queueMicrotask(() => {
     const runTwikoo = () => {
       twikoo.getRecentComments({
         envId: 'https://twikoo-delta-jade.vercel.app',
-        region: 'cn',
+        region: '',
         pageSize: 6,
         includeReply: true
       }).then(function (res) {
@@ -403,7 +403,7 @@ queueMicrotask(() => {
     if (typeof twikoo === 'object') {
       runTwikoo()
     } else {
-      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+      getScript('https://cdn.cbd.int/twikoo@1.6.41/dist/twikoo.all.min.js').then(runTwikoo)
     }
   }
 
