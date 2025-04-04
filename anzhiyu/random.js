@@ -1,3 +1,3 @@
-var posts=["article/hello-world/","article/2025-4-4-第一篇测试文档/"];function toRandomPost(){
+var posts=["article/hello-world/","article/2025-4-4-第一篇测试文档/","article/测试文档/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
