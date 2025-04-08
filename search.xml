@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>第一章 Latex与Vscode的相遇</title>
+      <link href="/article/%E7%AC%AC%E4%B8%80%E7%AB%A0-Latex%E4%B8%8EVscode%E7%9A%84%E7%9B%B8%E9%81%87/"/>
+      <url>/article/%E7%AC%AC%E4%B8%80%E7%AB%A0-Latex%E4%B8%8EVscode%E7%9A%84%E7%9B%B8%E9%81%87/</url>
+      
+        <content type="html"><![CDATA[<!-- <div class="video-container">[视频内嵌代码]</div><style>.video-container { position: relative; padding-top: 56.25%; } .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style> --><h1 id="0-小工具推荐"><a class="markdownIt-Anchor" href="#0-小工具推荐"></a> 0 小工具推荐</h1><ol><li>录制 <code>.gif</code>文件的工具：<ol><li>下载链接：<a href="https://www.screentogif.com/">screentogif</a></li><li>官方文档：<a href="https://www.screentogif.com/how-to-use">how to use screentogif</a></li></ol></li></ol><h1 id="1-在vscode中配置latex编译环境"><a class="markdownIt-Anchor" href="#1-在vscode中配置latex编译环境"></a> 1 在VSCode中配置Latex编译环境</h1><h1 id="2-双向跳转的快捷键"><a class="markdownIt-Anchor" href="#2-双向跳转的快捷键"></a> 2 双向跳转的快捷键</h1><blockquote><p>在 <em>VScode</em> 中，有双向跳转的快捷键，可以便于 PDF 预览与源码之间的互相跳转，内容定位。</p></blockquote><ol><li><p>由 PDF <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 源码：<code>Ctrl+鼠标左键双击</code>即可快速定位到源码：</p> <p align="center"> <img src="/img/self_gif_sources/演示1.gif" alt="alt text" width="70%" height="height"> </p></li><li><p>由源码 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> PDF：首先选中源码内容，使用快捷键<code>Ctrl+Shift+J</code>即可快速定位到 PDF 预览中的对应位置：</p> <p align="center"> <img src="/img/self_gif_sources/演示2.gif" alt="alt text" width="70%" height="height"> </p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Latex </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Latex </tag>
+            
+            <tag> 论文写作 </tag>
+            
+            <tag> VSCode配置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第二篇 博文写作语法</title>
       <link href="/article/%E7%AC%AC%E4%BA%8C%E7%AF%87-%E5%8D%9A%E6%96%87%E5%86%99%E4%BD%9C%E8%AF%AD%E6%B3%95/"/>
       <url>/article/%E7%AC%AC%E4%BA%8C%E7%AF%87-%E5%8D%9A%E6%96%87%E5%86%99%E4%BD%9C%E8%AF%AD%E6%B3%95/</url>
