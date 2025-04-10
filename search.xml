@@ -102,8 +102,6 @@
       
       <categories>
           
-          <category> 工具推荐 </category>
-          
           <category> Latex </category>
           
       </categories>
@@ -116,6 +114,8 @@
             <tag> VSCode配置 </tag>
             
             <tag> LaTex </tag>
+            
+            <tag> 工具推荐 </tag>
             
         </tags>
       
