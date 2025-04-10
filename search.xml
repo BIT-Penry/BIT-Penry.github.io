@@ -20,13 +20,13 @@
       
         <tags>
             
-            <tag> Latex </tag>
-            
             <tag> 论文写作 </tag>
             
             <tag> VSCode配置 </tag>
             
             <tag> 性能对比 </tag>
+            
+            <tag> LaTex </tag>
             
         </tags>
       
@@ -39,7 +39,7 @@
       <link href="/article/%E7%AC%AC%E4%BA%8C%E7%AB%A0-Vscode-PK-Overleaf/"/>
       <url>/article/%E7%AC%AC%E4%BA%8C%E7%AB%A0-Vscode-PK-Overleaf/</url>
       
-        <content type="html"><![CDATA[<h1 id="overleaf-与-vs-code-latex-对比哪个更适合你"><a class="markdownIt-Anchor" href="#overleaf-与-vs-code-latex-对比哪个更适合你"></a> Overleaf 与 VS Code + LaTeX 对比：哪个更适合你？</h1><p>在撰写论文、报告或学术文档时，LaTeX 是许多工程师、科研工作者和学生的首选工具。而如今，主流的两种 LaTeX 使用方式就是：</p><ul><li><strong>Overleaf（基于云端的 LaTeX 编辑器）</strong></li><li><strong>VS Code + LaTeX（本地环境结合现代编辑器）</strong></li></ul><p>这篇博客将从多个维度对比两者，帮助你找到最适合自己的 LaTeX 写作方式。</p><hr /><h2 id="1-上手难度与环境配置"><a class="markdownIt-Anchor" href="#1-上手难度与环境配置"></a> 1 上手难度与环境配置</h2><h3 id="overleaf"><a class="markdownIt-Anchor" href="#overleaf"></a> ✅ Overleaf：</h3><ul><li><strong>零配置</strong>，打开浏览器即可使用。</li><li>自带常用模板，适合新手快速上手。</li><li>支持多人协作编辑（类似 Google Docs）。</li></ul><h3 id="vs-code-latex"><a class="markdownIt-Anchor" href="#vs-code-latex"></a> ⚙ VS Code + LaTeX：</h3><ul><li>需要安装：<ul><li>TeX Live / MiKTeX</li><li>VS Code + LaTeX Workshop 插件</li></ul></li><li><strong>首次配置较复杂</strong>，需手动设置编译链（如 XeLaTeX）、字体路径、中文支持等。</li><li>上手门槛稍高，但配置好之后效率极高。</li></ul><hr /><h2 id="2-编辑体验与功能扩展"><a class="markdownIt-Anchor" href="#2-编辑体验与功能扩展"></a> 2 编辑体验与功能扩展</h2><h3 id="overleaf-2"><a class="markdownIt-Anchor" href="#overleaf-2"></a> 🖋 Overleaf：</h3><ul><li>所见即所得式的预览模式。</li><li>提供版本控制、GitHub 同步、分享链接。</li><li>插件功能有限，较依赖 Overleaf 自身功能。</li></ul><h3 id="vs-code-latex-2"><a class="markdownIt-Anchor" href="#vs-code-latex-2"></a> 🔧 VS Code + LaTeX：</h3><ul><li>强大的插件生态（如 LaTeX-Workshop、Snippets、Snipaste 图像粘贴等）。</li><li>可定制预览、主题、高亮、片段补全。</li><li>支持和 Git 本地仓库无缝协作，适合项目型写作。</li></ul><hr /><h2 id="3-中文支持与字体设置"><a class="markdownIt-Anchor" href="#3-中文支持与字体设置"></a> 3 中文支持与字体设置</h2><h3 id="overleaf-3"><a class="markdownIt-Anchor" href="#overleaf-3"></a> Overleaf：</h3><ul><li>提供 CTeX 模板，<strong>支持中文写作</strong>。</li><li>但若需使用自定义字体（如微软雅黑、宋体等），权限受限，字体有限。</li></ul><h3 id="vs-code-本地环境"><a class="markdownIt-Anchor" href="#vs-code-本地环境"></a> VS Code 本地环境：</h3><ul><li>可调用系统所有中文字体（如 SimSun、SimHei、FZShuSong 等）。</li><li>可自由配置 <code>fontspec</code>，完全支持 XeLaTeX 编译中文。</li></ul><hr /><h2 id="4-协作与版本管理"><a class="markdownIt-Anchor" href="#4-协作与版本管理"></a> 4 协作与版本管理</h2><h3 id="overleaf-4"><a class="markdownIt-Anchor" href="#overleaf-4"></a> Overleaf：</h3><ul><li>最强优势之一：<strong>多人在线协作</strong>。</li><li>每次保存自动生成快照，有基本版本控制。</li><li>支持链接分享和评论功能。</li></ul><h3 id="vs-code"><a class="markdownIt-Anchor" href="#vs-code"></a> VS Code：</h3><ul><li>通过 Git 协作与版本控制。</li><li>不适合非程序员用户在线同步编辑。</li></ul><hr /><h2 id="5-编译与输出控制"><a class="markdownIt-Anchor" href="#5-编译与输出控制"></a> 5 编译与输出控制</h2><h3 id="overleaf-5"><a class="markdownIt-Anchor" href="#overleaf-5"></a> Overleaf：</h3><ul><li>提供 PDF 编译、日志查看等基础功能。</li><li>不支持 <code>shell-escape</code>、TikZ 高级功能时可能遇到限制。</li></ul><h3 id="vs-code-本地"><a class="markdownIt-Anchor" href="#vs-code-本地"></a> VS Code + 本地：</h3><ul><li>完全控制编译流程（如 XeLaTeX + Biber + Makefile）。</li><li>支持 <code>latexmk</code>、<code>biblatex</code>、<code>minted</code>、<code>TikZ 3D</code> 等高阶功能。</li></ul><hr /><h2 id="6-其他对比速览"><a class="markdownIt-Anchor" href="#6-其他对比速览"></a> 6 其他对比速览</h2><table><thead><tr><th>维度</th><th>Overleaf</th><th>VS Code + LaTeX</th></tr></thead><tbody><tr><td>中文兼容</td><td>一般（依赖模板）</td><td>优秀（本地字体任意配置）</td></tr><tr><td>模板支持</td><td>丰富（大量公开模板）</td><td>自行下载或维护模板</td></tr><tr><td>跨平台性</td><td>高（网页即可）</td><td>高（支持 macOS / Windows / Linux）</td></tr><tr><td>网络依赖</td><td>必须联网</td><td>本地可离线编译</td></tr><tr><td>协作能力</td><td>强（实时编辑、评论）</td><td>需借助 Git 或网盘协作</td></tr><tr><td>编译速度</td><td>中等（受网络和队列影响）</td><td>快（本地硬件决定）</td></tr></tbody></table><hr /><h2 id="总结如何选择适合你的方案"><a class="markdownIt-Anchor" href="#总结如何选择适合你的方案"></a> 总结：如何选择适合你的方案？</h2><ul><li>👶 <strong>新手 &amp; 教学场景</strong> → 推荐使用 Overleaf</li><li>🧑‍💻 <strong>技术用户 &amp; 项目写作</strong> → VS Code + LaTeX 更高效</li><li>📡 <strong>频繁协作团队</strong> → Overleaf 的在线优势明显</li><li>🎨 <strong>对中文排版和自定义要求高</strong> → VS Code 更灵活</li></ul><hr /><h2 id="个人感受"><a class="markdownIt-Anchor" href="#个人感受"></a> ✨ 个人感受</h2><p>我目前是 <strong>VS Code + LaTeX</strong> 的深度用户，主要原因是：</p><ul><li>Overleaf 编译速度慢，文本、代码无高亮，而且不能配置 AI 协助自动补全等；</li><li>Overleaf 项目较大需付费：对于较大的项目，可能会超过免费的编译时间，需要升级为付费会员。</li><li>自由控制文档结构和样式；</li><li>插图、代码高亮、引用功能更强大；</li><li>配合 GitHub 管理多个论文项目非常顺畅。</li></ul><p>当然，如果和导师或小组协作编辑文档，我也会使用 Overleaf 来方便交流与提交。</p><hr /><p>📌 如果你还没有配置 VS Code LaTeX 环境，我推荐阅读这篇文章：<a href="">VS Code 配置 XeLaTeX 中文环境教程（附 BibLaTeX 支持）</a></p><p>欢迎留言分享你对这两种方式的看法～</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="overleaf-与-vs-code-latex-对比哪个更适合你"><a class="markdownIt-Anchor" href="#overleaf-与-vs-code-latex-对比哪个更适合你"></a> Overleaf 与 VS Code + LaTeX 对比：哪个更适合你？</h1><p>在撰写论文、报告或学术文档时，LaTeX 是许多工程师、科研工作者和学生的首选工具。而如今，主流的两种 LaTeX 使用方式就是：</p><ul><li><strong>Overleaf（基于云端的 LaTeX 编辑器）</strong></li><li><strong>VS Code + LaTeX（本地环境结合现代编辑器）</strong></li></ul><p>这篇博客将从多个维度对比两者，帮助你找到最适合自己的 LaTeX 写作方式。</p><hr /><h2 id="1-上手难度与环境配置"><a class="markdownIt-Anchor" href="#1-上手难度与环境配置"></a> 1 上手难度与环境配置</h2><h3 id="overleaf"><a class="markdownIt-Anchor" href="#overleaf"></a> ✅ Overleaf：</h3><ul><li><strong>零配置</strong>，打开浏览器即可使用。</li><li>自带常用模板，适合新手快速上手。</li><li>支持多人协作编辑（类似 Google Docs）。</li></ul><h3 id="vs-code-latex"><a class="markdownIt-Anchor" href="#vs-code-latex"></a> ⚙ VS Code + LaTeX：</h3><ul><li>需要安装：<ul><li>TeX Live / MiKTeX</li><li>VS Code + LaTeX Workshop 插件</li></ul></li><li><strong>首次配置较复杂</strong>，需手动设置编译链（如 XeLaTeX）、字体路径、中文支持等。</li><li>上手门槛稍高，但配置好之后效率极高。</li></ul><hr /><h2 id="2-编辑体验与功能扩展"><a class="markdownIt-Anchor" href="#2-编辑体验与功能扩展"></a> 2 编辑体验与功能扩展</h2><h3 id="overleaf-2"><a class="markdownIt-Anchor" href="#overleaf-2"></a> 🖋 Overleaf：</h3><ul><li>所见即所得式的预览模式。</li><li>提供版本控制、GitHub 同步、分享链接。</li><li>插件功能有限，较依赖 Overleaf 自身功能。</li></ul><h3 id="vs-code-latex-2"><a class="markdownIt-Anchor" href="#vs-code-latex-2"></a> 🔧 VS Code + LaTeX：</h3><ul><li>强大的插件生态（如 LaTeX-Workshop、Snippets、Snipaste 图像粘贴等）。</li><li>可定制预览、主题、高亮、片段补全。</li><li>支持和 Git 本地仓库无缝协作，适合项目型写作。</li></ul><hr /><h2 id="3-中文支持与字体设置"><a class="markdownIt-Anchor" href="#3-中文支持与字体设置"></a> 3 中文支持与字体设置</h2><h3 id="overleaf-3"><a class="markdownIt-Anchor" href="#overleaf-3"></a> Overleaf：</h3><ul><li>提供 CTeX 模板，<strong>支持中文写作</strong>。</li><li>但若需使用自定义字体（如微软雅黑、宋体等），权限受限，字体有限。</li></ul><h3 id="vs-code-本地环境"><a class="markdownIt-Anchor" href="#vs-code-本地环境"></a> VS Code 本地环境：</h3><ul><li>可调用系统所有中文字体（如 SimSun、SimHei、FZShuSong 等）。</li><li>可自由配置 <code>fontspec</code>，完全支持 XeLaTeX 编译中文。</li></ul><hr /><h2 id="4-协作与版本管理"><a class="markdownIt-Anchor" href="#4-协作与版本管理"></a> 4 协作与版本管理</h2><h3 id="overleaf-4"><a class="markdownIt-Anchor" href="#overleaf-4"></a> Overleaf：</h3><ul><li>最强优势之一：<strong>多人在线协作</strong>。</li><li>每次保存自动生成快照，有基本版本控制。</li><li>支持链接分享和评论功能。</li></ul><h3 id="vs-code"><a class="markdownIt-Anchor" href="#vs-code"></a> VS Code：</h3><ul><li>通过 Git 协作与版本控制。</li><li>不适合非程序员用户在线同步编辑。</li></ul><hr /><h2 id="5-编译与输出控制"><a class="markdownIt-Anchor" href="#5-编译与输出控制"></a> 5 编译与输出控制</h2><h3 id="overleaf-5"><a class="markdownIt-Anchor" href="#overleaf-5"></a> Overleaf：</h3><ul><li>提供 PDF 编译、日志查看等基础功能。</li><li>不支持 <code>shell-escape</code>、TikZ 高级功能时可能遇到限制。</li></ul><h3 id="vs-code-本地"><a class="markdownIt-Anchor" href="#vs-code-本地"></a> VS Code + 本地：</h3><ul><li>完全控制编译流程（如 XeLaTeX + Biber + Makefile）。</li><li>支持 <code>latexmk</code>、<code>biblatex</code>、<code>minted</code>、<code>TikZ 3D</code> 等高阶功能。</li></ul><hr /><h2 id="6-其他对比速览"><a class="markdownIt-Anchor" href="#6-其他对比速览"></a> 6 其他对比速览</h2><table><thead><tr><th>维度</th><th>Overleaf</th><th>VS Code + LaTeX</th></tr></thead><tbody><tr><td>中文兼容</td><td>一般（依赖模板）</td><td>优秀（本地字体任意配置）</td></tr><tr><td>模板支持</td><td>丰富（大量公开模板）</td><td>自行下载或维护模板</td></tr><tr><td>跨平台性</td><td>高（网页即可）</td><td>高（支持 macOS / Windows / Linux）</td></tr><tr><td>网络依赖</td><td>必须联网</td><td>本地可离线编译</td></tr><tr><td>协作能力</td><td>强（实时编辑、评论）</td><td>需借助 Git 或网盘协作</td></tr><tr><td>编译速度</td><td>中等（受网络和队列影响）</td><td>快（本地硬件决定）</td></tr></tbody></table><hr /><h2 id="总结如何选择适合你的方案"><a class="markdownIt-Anchor" href="#总结如何选择适合你的方案"></a> 总结：如何选择适合你的方案？</h2><ul><li>👶 <strong>新手 &amp; 教学场景</strong> → 推荐使用 Overleaf</li><li>🧑‍💻 <strong>技术用户 &amp; 项目写作</strong> → VS Code + LaTeX 更高效</li><li>📡 <strong>频繁协作团队</strong> → Overleaf 的在线优势明显</li><li>🎨 <strong>对中文排版和自定义要求高</strong> → VS Code 更灵活</li></ul><hr /><h2 id="个人感受"><a class="markdownIt-Anchor" href="#个人感受"></a> ✨ 个人感受</h2><p>我目前是 <strong>VS Code + LaTeX</strong> 的深度用户，主要原因是：</p><ul><li>Overleaf 编译速度慢，文本、代码无高亮，而且不能配置 AI 协助自动补全等；</li><li>Overleaf 项目较大需付费：对于较大的项目，可能会超过免费的编译时间，需要升级为付费会员。</li><li>自由控制文档结构和样式；</li><li>插图、代码高亮、引用功能更强大；</li><li>配合 GitHub 管理多个论文项目非常顺畅。</li></ul><p>当然，如果和导师或小组协作编辑文档，我也会使用 Overleaf 来方便交流与提交。</p><hr /><p>📌 如果你还没有配置 VS Code LaTeX 环境，我推荐阅读这篇文章：<a href="https://penry.asia/article/%E7%AC%AC%E4%B8%80%E7%AB%A0-Latex%E4%B8%8EVscode%E7%9A%84%E7%9B%B8%E9%81%87/">第一章 LaTex与VScode的相遇</a></p><p>欢迎留言分享你对这两种方式的看法～</p>]]></content>
       
       
       <categories>
@@ -51,13 +51,13 @@
       
         <tags>
             
-            <tag> Latex </tag>
-            
             <tag> 论文写作 </tag>
             
             <tag> VSCode配置 </tag>
             
             <tag> 性能对比 </tag>
+            
+            <tag> LaTex </tag>
             
         </tags>
       
@@ -104,18 +104,18 @@
           
           <category> 工具推荐 </category>
           
-          <category> Latex </category>
+          <category> LaTex </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Latex </tag>
-            
             <tag> 论文写作 </tag>
             
             <tag> VSCode配置 </tag>
+            
+            <tag> LaTex </tag>
             
         </tags>
       
