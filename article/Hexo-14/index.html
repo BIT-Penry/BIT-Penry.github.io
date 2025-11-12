@@ -1,0 +1,738 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面 | Penry 的秘密小屋</title><meta name="keywords" content="hexo, 网站更新日志, changelog, 魔改, 博客功能"><meta name="author" content="Penry"><meta name="copyright" content="Penry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面"><meta name="application-name" content="第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面"><meta property="og:url" content="https://penry.asia/article/Hexo-14/index.html"><meta property="og:site_name" content="Penry 的秘密小屋"><meta property="og:description" content="本文详细介绍了如何为Hexo博客添加一个美观实用的网站更新日志页面，记录网站的成长历程和版本迭代。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/10.gif"><meta property="article:author" content="Penry"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/10.gif"><meta name="description" content="本文详细介绍了如何为Hexo博客添加一个美观实用的网站更新日志页面，记录网站的成长历程和版本迭代。"><link rel="shortcut icon" href="/img/logo/logo1.png"><link rel="canonical" href="https://penry.asia/article/Hexo-14/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//hm.baidu.com"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?10a02737be171d4ca717eb4c1c0b0900";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"zFOZ0AB2Rk2","Referer":"https://penry.asia/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w Penry的文章不吸引人嘛~","backTitle":"♪(^∇^*) Penry欢迎你回来~"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://www.penry.asia/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":5},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️  + 🖥️  = 与科技同行","🔍  + 💡  = 分享智慧火","🏠  + 📱  = 家中控制者","🔨  + 🎨  = 设计开发合","🤝  + 🧠  = 交互设计师","🏃  + 🏃d<200d>♂️ = 行动梦想家","🧱  + 🏗️  = 团队推动力","💢  + 🔥  = 行动胜言语"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Penry","link":"链接: ","source":"来源: Penry 的秘密小屋","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Penry 的秘密小屋',
+  title: '第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面',
+  postAI: 'true',
+  pageFillDescription: ' 前言,  实现思路,  创建必要文件,  创建页面文件,  创建数据文件,  创建布局模板,  修改主题配置,  效果展示,  自定义与扩展,  总结前言随着博客的不断更新迭代我们经常会对网站进行各种优化和改进为了让读者和自己能够清晰地了解网站的发展历程添加一个网站更新日志页面是个不错的选择这样不仅可以记录网站的成长还能展示我们对博客的用心维护本文将详细介绍如何为博客添加一个美观实用的网站更新日志页面包括页面创建数据配置样式美化等全过程实现思路要实现网站更新日志页面我们需要完成以下几个步骤创建页面文件和数据文件编写页面布局模板修改主题配置添加菜单项美化页面样式下面我们一步步来实现创建必要文件创建页面文件首先我们需要创建一个新的页面文件在博客根目录下执行以下命令这将在目录下创建一个文件打开该文件修改其内容如下网站更新日志注意我们将设置为这将告诉使用我们即将创建的自定义布局模板创建数据文件接下来我们需要创建一个数据文件来存储网站的更新日志信息在目录下创建文件内容如下网站更新日志优化修复页面样式更改部分图片更新隐私协议更新协议微调细节样式微调加载界面捕获安知鱼主题更新修复即刻短文界面文本换行错误在这个文件中我们定义了页面的标题副标题和提示信息以及一个包含多个更新日志条目的数组每个条目包含日期版本号和更新内容列表创建布局模板现在我们需要创建一个布局模板来展示更新日志在目录下创建文件内容如下年月日这个模板使用语言编写定义了更新日志页面的结构和样式我们创建了一个时间线布局每个更新日志条目都有日期版本号和更新内容列表同时我们添加了一些动画和交互效果使页面更加生动修改主题配置接下来我们需要修改主题的页面布局文件以支持我们新创建的页面类型打开文件在语句中添加对类型的处理最后我们需要在主题配置文件中添加一个菜单项以便用户可以访问我们的更新日志页面打开文件在部分添加以下内容其他菜单项时光归档分类标签网站日志这将在时光菜单下添加一个网站日志菜单项链接到我们的更新日志页面效果展示完成以上步骤后我们可以通过以下命令生成并预览网站现在访问就可以看到我们精心设计的网站更新日志页面了页面效果如下图所示可以看到我们的网站更新日志页面采用了时间线的形式每个更新条目都有清晰的日期以年月日的格式显示版本号和更新内容列表页面整体风格简洁美观并且添加了悬停效果和动画提升了用户体验自定义与扩展你可以根据自己的需求对更新日志页面进行进一步的自定义修改样式调整文件中的样式改变页面的颜色字体动画效果等添加更多信息在文件中添加更多的字段如重要更新的详细说明相关链接等增加筛选功能如果更新日志条目较多可以添加按版本或日期筛选的功能自定义日期格式默认情况下日期会直接显示中的原始格式如果你想要更友好的日期显示格式可以在文件中添加日期格式化代码例如将格式转换为年月日格式年月日这样即使在中使用这样的标准日期格式在页面上也会显示为年月日更加美观易读总结通过本文的介绍我们成功地为博客添加了一个美观实用的网站更新日志页面这个页面不仅可以记录网站的成长历程还能展示我们对博客的用心维护增强用户体验实现这个功能主要涉及以下几个步骤创建页面文件和数据文件编写页面布局模板修改主题配置添加菜单项美化页面样式希望这篇教程对你有所帮助让你的博客更加丰富多彩',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-14 09:37:41',
+  postMainColor: '#4a5568',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"><link rel="stylesheet" href="/css/home.css"><link rel="stylesheet" href="/custom/css/font.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div id="loading-box-me"><div id="wrapper"><div id="mouse"></div><div class="loader"></div><div class="loading-bar-me"><div class="progress-bar"></div></div><div class="status"><div class="state"></div><div class="percentage"></div></div></div></div></div><script>const preloader = {
+  endLoading: () => {
+    var loadingBox = document.getElementById('loading-box');
+    var loadingBoxme = document.getElementById('loading-box-me');
+    loadingBoxme.addEventListener('animationend', () => {setTimeout(function() {loadingBox.classList.add("loaded");}, 2000) })
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  },
+  otherendLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.otherendLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.otherendLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.csdn.net/minpengyuanBITer?spm=1010.2135.3001.10640" title="CSDN"><img class="back-menu-item-icon" src="/img/logo/CSDN.jpg" alt="CSDN"/><span class="back-menu-item-text">CSDN</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/BIT-Penry/Blog-Image/tree/master" title="Penry 的图床"><img class="back-menu-item-icon" src="https://cdn.jsdelivr.net/gh/zetman-lz/PicGo@main/jsdelivr.ico" alt="Penry 的图床"/><span class="back-menu-item-text">Penry 的图床</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://lobechat.zetman.top/" title="LobeChat聊天"><img class="back-menu-item-icon" src="https://cdn.jsdelivr.net/gh/zetman-lz/PicGo@main/lobechat.ico" alt="LobeChat聊天"/><span class="back-menu-item-text">LobeChat聊天</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/BIT-Penry/BIT-Template-Course-Report" title="BIT课程论文模版"><img class="back-menu-item-icon" src="/img/logo/BIT.png" alt="BIT课程论文模版"/><span class="back-menu-item-text">BIT课程论文模版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/BIT-Penry/BIT-Template-Experiment-Report" title="BIT实验报告模版"><img class="back-menu-item-icon" src="/img/logo/BIT.png" alt="BIT实验报告模版"/><span class="back-menu-item-text">BIT实验报告模版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">配置</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://docs.anheyu.com/" title="安之鱼"><img class="back-menu-item-icon" src="/img/cover/Cthulhu1.gif" alt="安之鱼"/><span class="back-menu-item-text">安之鱼</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Penry 的秘密小屋</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/charts/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 统计</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 藏宝</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/Warning/"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 警告</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/treasure/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 藏宝阁</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 时光</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/dailynote/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 日记簿</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/changelog/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 网站日志</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于Penry</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/reward/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/reward/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/reward/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3Blue1Brown/" style="font-size: 1.05rem;">3Blue1Brown<sup>1</sup></a><a href="/tags/DeepSeek/" style="font-size: 1.05rem;">DeepSeek<sup>1</sup></a><a href="/tags/LaTex/" style="font-size: 1.05rem;">LaTex<sup>4</sup></a><a href="/tags/PicGo/" style="font-size: 1.05rem;">PicGo<sup>1</sup></a><a href="/tags/Plog/" style="font-size: 1.05rem;">Plog<sup>1</sup></a><a href="/tags/Python/" style="font-size: 1.05rem;">Python<sup>10</sup></a><a href="/tags/Pytorch/" style="font-size: 1.05rem;">Pytorch<sup>6</sup></a><a href="/tags/ROS/" style="font-size: 1.05rem;">ROS<sup>1</sup></a><a href="/tags/VSCode%E9%85%8D%E7%BD%AE/" style="font-size: 1.05rem;">VSCode配置<sup>4</sup></a><a href="/tags/Zotero/" style="font-size: 1.05rem;">Zotero<sup>1</sup></a><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>17</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/numpy/" style="font-size: 1.05rem;">numpy<sup>2</sup></a><a href="/tags/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/" style="font-size: 1.05rem;">具身智能<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 1.05rem;">图床<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/" style="font-size: 1.05rem;">工具推荐<sup>6</sup></a><a href="/tags/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" style="font-size: 1.05rem;">常用网站<sup>2</sup></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">强化学习<sup>6</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94/" style="font-size: 1.05rem;">性能对比<sup>2</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">数学原理<sup>6</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">数学基础<sup>2</sup></a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">机器学习基础<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.05rem;">测试<sup>1</sup></a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.05rem;">爬虫<sup>1</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 1.05rem;">线性代数<sup>2</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">编程基础<sup>3</sup></a><a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/" style="font-size: 1.05rem;">论文写作<sup>4</sup></a><a href="/tags/%E9%AD%94%E6%94%B9%E5%AE%9E%E5%BD%95/" style="font-size: 1.05rem;">魔改实录<sup>13</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/hexo%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%AD%94%E6%94%B9/" itemprop="url">hexo配置与魔改</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/hexo/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>hexo</span></a><a class="article-meta__tags" href="/tags/%E9%AD%94%E6%94%B9%E5%AE%9E%E5%BD%95/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>魔改实录</span></a></span></div></div><h1 class="post-title" itemprop="name headline">第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-08-14T01:37:41.839Z" title="发表于 2025-08-14 09:37:41">2025-08-14</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-08-14T01:37:41.839Z" title="更新于 2025-08-14 09:37:41">2025-08-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.4k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为北京市海淀区"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>北京市海淀区</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/article/Hexo-14/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/top_img/9.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Tianli GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope itemtype="https://penry.info/article/Hexo-14/"><header><a class="post-meta-categories" href="/categories/hexo%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%AD%94%E6%94%B9/" itemprop="url">hexo配置与魔改</a><a href="/tags/hexo/" tabindex="-1" itemprop="url">hexo</a><a href="/tags/%E9%AD%94%E6%94%B9%E5%AE%9E%E5%BD%95/" tabindex="-1" itemprop="url">魔改实录</a><h1 id="CrawlerTitle" itemprop="name headline">第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Penry</span><time itemprop="dateCreated datePublished" datetime="2025-08-14T01:37:41.839Z" title="发表于 2025-08-14 09:37:41">2025-08-14</time><time itemprop="dateCreated datePublished" datetime="2025-08-14T01:37:41.839Z" title="更新于 2025-08-14 09:37:41">2025-08-14</time></header><h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>随着博客的不断更新迭代，我们经常会对网站进行各种优化和改进。为了让读者和自己能够清晰地了解网站的发展历程，添加一个网站更新日志页面是个不错的选择。这样不仅可以记录网站的成长，还能展示我们对博客的用心维护。</p>
+<p>本文将详细介绍如何为Hexo博客添加一个美观实用的网站更新日志页面，包括页面创建、数据配置、样式美化等全过程。</p>
+<h2 id="实现思路"><a class="markdownIt-Anchor" href="#实现思路"></a> 实现思路</h2>
+<p>要实现网站更新日志页面，我们需要完成以下几个步骤：</p>
+<ol>
+<li>创建页面文件和数据文件</li>
+<li>编写页面布局模板</li>
+<li>修改主题配置，添加菜单项</li>
+<li>美化页面样式</li>
+</ol>
+<p>下面我们一步步来实现。</p>
+<h2 id="创建必要文件"><a class="markdownIt-Anchor" href="#创建必要文件"></a> 创建必要文件</h2>
+<h3 id="创建页面文件"><a class="markdownIt-Anchor" href="#创建页面文件"></a> 创建页面文件</h3>
+<p>首先，我们需要创建一个新的页面文件。在博客根目录下执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page changelog</span><br></pre></td></tr></table></figure>
+<p>这将在 <code>source/changelog/</code> 目录下创建一个 <code>index.md</code> 文件。打开该文件，修改其内容如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: </span><br><span class="line">date: 2025-08-13 16:31:00</span><br><span class="line">type: changelog</span><br><span class="line">updated: 2025-08-13 16:31:00</span><br><span class="line">comments: true</span><br><span class="line">description: 网站更新日志</span><br><span class="line">keywords: changelog</span><br><span class="line">top<span class="emphasis">_img: </span></span><br><span class="line"><span class="emphasis">mathjax: false</span></span><br><span class="line"><span class="emphasis">katex:</span></span><br><span class="line"><span class="emphasis">aside:</span></span><br><span class="line"><span class="emphasis">aplayer:</span></span><br><span class="line"><span class="emphasis">highlight_</span>shrink:</span><br><span class="line"><span class="section">top<span class="emphasis">_single_</span>background:</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<p>注意，我们将 <code>type</code> 设置为 <code>changelog</code>，这将告诉Hexo使用我们即将创建的自定义布局模板。</p>
+<h3 id="创建数据文件"><a class="markdownIt-Anchor" href="#创建数据文件"></a> 创建数据文件</h3>
+<p>接下来，我们需要创建一个数据文件来存储网站的更新日志信息。在 <code>source/_data/</code> 目录下创建 <code>changelog.yml</code> 文件，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">网站更新日志</span></span><br><span class="line"><span class="attr">subtitle:</span> </span><br><span class="line"><span class="attr">tip:</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">changelogs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">date:</span> <span class="number">2025-08-12</span></span><br><span class="line">    <span class="attr">version:</span> <span class="number">1.3</span><span class="number">.8</span></span><br><span class="line">    <span class="attr">changes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">优化</span> <span class="string">/</span> <span class="string">修复</span> <span class="string">RSS</span> <span class="string">页面样式</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">更改部分图片</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">更新</span> <span class="string">隐私协议</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">更新</span> <span class="string">Cookies</span> <span class="string">协议</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">date:</span> <span class="number">2025-07-02</span></span><br><span class="line">    <span class="attr">version:</span> <span class="number">1.3</span><span class="number">.7</span></span><br><span class="line">    <span class="attr">changes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">微调细节样式</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">date:</span> <span class="number">2025-06-20</span></span><br><span class="line">    <span class="attr">version:</span> <span class="number">1.3</span><span class="number">.6</span></span><br><span class="line">    <span class="attr">changes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">微调加载界面</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">捕获安知鱼主题更新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;fix: 修复即刻短文界面文本换行错误&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在这个文件中，我们定义了页面的标题、副标题和提示信息，以及一个包含多个更新日志条目的数组。每个条目包含日期、版本号和更新内容列表。</p>
+<h2 id="创建布局模板"><a class="markdownIt-Anchor" href="#创建布局模板"></a> 创建布局模板</h2>
+<p>现在，我们需要创建一个布局模板来展示更新日志。在 <code>themes/anzhiyu/layout/includes/page/</code> 目录下创建 <code>changelog.pug</code> 文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br></pre></td><td class="code"><pre><span class="line">#article-container</span><br><span class="line">  .changelog-container</span><br><span class="line">    .changelog-header</span><br><span class="line">      h1.changelog-title= site.data.changelog.title</span><br><span class="line">      p.changelog-subtitle= site.data.changelog.subtitle</span><br><span class="line">      .changelog-tip= site.data.changelog.tip</span><br><span class="line">    </span><br><span class="line">    .changelog-timeline</span><br><span class="line">      each item in site.data.changelog.changelogs</span><br><span class="line">        .changelog-item</span><br><span class="line">          .changelog-item-marker</span><br><span class="line">          .changelog-item-content</span><br><span class="line">            - var dateObj = new Date(item.date)</span><br><span class="line">            - var year = dateObj.getFullYear()</span><br><span class="line">            - var month = dateObj.getMonth() + 1</span><br><span class="line">            - var day = dateObj.getDate()</span><br><span class="line">            - var formattedDate = year + &#x27;年&#x27; + month + &#x27;月&#x27; + day + &#x27;日&#x27;</span><br><span class="line">            .changelog-item-date= formattedDate</span><br><span class="line">            .changelog-item-version= item.version</span><br><span class="line">            .changelog-item-changes</span><br><span class="line">              each change in item.changes</span><br><span class="line">                .changelog-item-change= change</span><br><span class="line"></span><br><span class="line">style.</span><br><span class="line">  .changelog-container &#123;</span><br><span class="line">    max-width: 900px;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">    padding: 40px;</span><br><span class="line">    background-color: var(--card-bg);</span><br><span class="line">    border-radius: 20px;</span><br><span class="line">    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-header &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    margin-bottom: 60px;</span><br><span class="line">    position: relative;</span><br><span class="line">    padding-bottom: 25px;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-header:after &#123;</span><br><span class="line">    content: &#x27;&#x27;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 50%;</span><br><span class="line">    transform: translateX(-50%);</span><br><span class="line">    width: 120px;</span><br><span class="line">    height: 5px;</span><br><span class="line">    background-image: linear-gradient(to right, #36d1dc 0%, #5b86e5 100%);</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    box-shadow: 0 3px 10px rgba(91, 134, 229, 0.3);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-title &#123;</span><br><span class="line">    font-size: 3.2rem;</span><br><span class="line">    margin-bottom: 20px;</span><br><span class="line">    background-image: linear-gradient(to right, #36d1dc 0%, #5b86e5 100%);</span><br><span class="line">    -webkit-background-clip: text;</span><br><span class="line">    -webkit-text-fill-color: transparent;</span><br><span class="line">    font-weight: 800;</span><br><span class="line">    letter-spacing: 1.5px;</span><br><span class="line">    text-shadow: 0 8px 15px rgba(91, 134, 229, 0.2);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-subtitle &#123;</span><br><span class="line">    font-size: 1.5rem;</span><br><span class="line">    color: var(--font-color);</span><br><span class="line">    margin-bottom: 18px;</span><br><span class="line">    font-weight: 500;</span><br><span class="line">    opacity: 0.85;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-tip &#123;</span><br><span class="line">    font-size: 1.2rem;</span><br><span class="line">    color: var(--font-color);</span><br><span class="line">    margin-bottom: 25px;</span><br><span class="line">    font-style: italic;</span><br><span class="line">    opacity: 0.7;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-timeline &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    padding-left: 45px;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-timeline:before &#123;</span><br><span class="line">    content: &#x27;&#x27;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 6px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background-image: linear-gradient(to bottom, #36d1dc 0%, #5b86e5 100%);</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    box-shadow: 0 0 25px rgba(91, 134, 229, 0.4);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    margin-bottom: 50px;</span><br><span class="line">    animation: fadeInUp 0.6s ease-out both;</span><br><span class="line">    animation-delay: calc(var(--i, 0) * 0.15s);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-marker &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: -48px;</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 20px;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    background-color: #ff6b6b;</span><br><span class="line">    border: 4px solid #fff;</span><br><span class="line">    box-shadow: 0 0 0 4px #5b86e5, 0 0 20px rgba(91, 134, 229, 0.6);</span><br><span class="line">    transition: all 0.4s ease;</span><br><span class="line">    z-index: 1;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item:hover .changelog-item-marker &#123;</span><br><span class="line">    transform: scale(1.3);</span><br><span class="line">    background-color: #ff8e8e;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-content &#123;</span><br><span class="line">    background-color: var(--card-bg);</span><br><span class="line">    border-radius: 18px;</span><br><span class="line">    padding: 30px;</span><br><span class="line">    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);</span><br><span class="line">    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);</span><br><span class="line">    border: 1px solid rgba(91, 134, 229, 0.15);</span><br><span class="line">    position: relative;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-content:before &#123;</span><br><span class="line">    content: &#x27;&#x27;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 6px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background-image: linear-gradient(to bottom, #36d1dc 0%, #5b86e5 100%);</span><br><span class="line">    opacity: 0.85;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-content:hover &#123;</span><br><span class="line">    transform: translateY(-10px) scale(1.02);</span><br><span class="line">    box-shadow: 0 20px 40px rgba(91, 134, 229, 0.2);</span><br><span class="line">    border-color: rgba(91, 134, 229, 0.4);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-date &#123;</span><br><span class="line">    font-size: 1.15rem;</span><br><span class="line">    color: #36d1dc;</span><br><span class="line">    margin-bottom: 10px;</span><br><span class="line">    font-weight: 500;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    padding: 4px 12px;</span><br><span class="line">    background-color: rgba(54, 209, 220, 0.12);</span><br><span class="line">    border-radius: 20px;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-version &#123;</span><br><span class="line">    font-size: 1.6rem;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    margin-bottom: 18px;</span><br><span class="line">    color: var(--font-color);</span><br><span class="line">    display: flex;</span><br><span class="line">    align-items: center;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-version:after &#123;</span><br><span class="line">    content: &#x27;&#x27;;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width: 60px;</span><br><span class="line">    height: 3px;</span><br><span class="line">    background-image: linear-gradient(to right, #36d1dc 0%, #5b86e5 100%);</span><br><span class="line">    margin-left: 12px;</span><br><span class="line">    border-radius: 2px;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-changes &#123;</span><br><span class="line">    color: var(--font-color);</span><br><span class="line">    opacity: 0.9;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-change &#123;</span><br><span class="line">    margin-bottom: 12px;</span><br><span class="line">    position: relative;</span><br><span class="line">    padding-left: 28px;</span><br><span class="line">    transition: all 0.3s ease;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-change:hover &#123;</span><br><span class="line">    transform: translateX(8px);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  .changelog-item-change:before &#123;</span><br><span class="line">    content: &#x27;•&#x27;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    color: #5b86e5;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    font-size: 1.6rem;</span><br><span class="line">    line-height: 1;</span><br><span class="line">    top: -3px;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @keyframes fadeInUp &#123;</span><br><span class="line">    from &#123;</span><br><span class="line">      opacity: 0;</span><br><span class="line">      transform: translateY(30px);</span><br><span class="line">    &#125;</span><br><span class="line">    to &#123;</span><br><span class="line">      opacity: 1;</span><br><span class="line">      transform: translateY(0);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @media (max-width: 768px) &#123;</span><br><span class="line">    .changelog-container &#123;</span><br><span class="line">      padding: 25px;</span><br><span class="line">      margin: 0 15px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-title &#123;</span><br><span class="line">      font-size: 2.4rem;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-subtitle &#123;</span><br><span class="line">      font-size: 1.2rem;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-timeline &#123;</span><br><span class="line">      padding-left: 35px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-item-marker &#123;</span><br><span class="line">      left: -38px;</span><br><span class="line">      width: 16px;</span><br><span class="line">      height: 16px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-item-content &#123;</span><br><span class="line">      padding: 22px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-item-version &#123;</span><br><span class="line">      font-size: 1.4rem;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @media (max-width: 480px) &#123;</span><br><span class="line">    .changelog-container &#123;</span><br><span class="line">      padding: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-title &#123;</span><br><span class="line">      font-size: 2rem;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-timeline &#123;</span><br><span class="line">      padding-left: 30px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .changelog-item-content &#123;</span><br><span class="line">      padding: 18px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这个模板使用Pug语言编写，定义了更新日志页面的HTML结构和CSS样式。我们创建了一个时间线布局，每个更新日志条目都有日期、版本号和更新内容列表。同时，我们添加了一些动画和交互效果，使页面更加生动。</p>
+<h2 id="修改主题配置"><a class="markdownIt-Anchor" href="#修改主题配置"></a> 修改主题配置</h2>
+<p>接下来，我们需要修改主题的页面布局文件，以支持我们新创建的页面类型。打开 <code>themes/anzhiyu/layout/page.pug</code> 文件，在 <code>case page.type</code> 语句中添加对 <code>changelog</code> 类型的处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">case page.type</span><br><span class="line">  when &#x27;tags&#x27;</span><br><span class="line">    include includes/page/tags.pug</span><br><span class="line">  when &#x27;link&#x27;</span><br><span class="line">    include includes/page/flink.pug</span><br><span class="line">  when &#x27;treasure&#x27;</span><br><span class="line">    include includes/page/treasure.pug</span><br><span class="line">  when &#x27;categories&#x27;</span><br><span class="line">    include includes/page/categories.pug</span><br><span class="line">  when &#x27;essay&#x27;</span><br><span class="line">    include includes/page/essay.pug</span><br><span class="line">  when &#x27;room&#x27;</span><br><span class="line">    include includes/page/room.pug</span><br><span class="line">  when &#x27;about&#x27;</span><br><span class="line">    include includes/page/about.pug</span><br><span class="line">  when &#x27;album&#x27;</span><br><span class="line">    include includes/page/album.pug</span><br><span class="line">  when &#x27;fcircle&#x27;</span><br><span class="line">    include includes/page/fcircle.pug</span><br><span class="line">  when &#x27;album_detail&#x27;</span><br><span class="line">    include includes/page/album_detail.pug</span><br><span class="line">  when &#x27;music&#x27;</span><br><span class="line">    include includes/page/music.pug</span><br><span class="line">  when &#x27;equipment&#x27;</span><br><span class="line">    include includes/page/equipment.pug</span><br><span class="line">  when &#x27;dailynote&#x27;</span><br><span class="line">    include includes/page/dailynote.pug</span><br><span class="line">  when &#x27;changelog&#x27;</span><br><span class="line">    include includes/page/changelog.pug</span><br><span class="line">  default</span><br><span class="line">    include includes/page/default-page.pug</span><br></pre></td></tr></table></figure>
+<p>最后，我们需要在主题配置文件中添加一个菜单项，以便用户可以访问我们的更新日志页面。打开 <code>_config.anzhiyu.yml</code> 文件，在 <code>menu</code> 部分添加以下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="comment"># 其他菜单项...</span></span><br><span class="line">  <span class="string">时光:</span></span><br><span class="line">    <span class="string">归档:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">anzhiyu-icon-box-archive</span></span><br><span class="line">    <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">anzhiyu-icon-shapes</span></span><br><span class="line">    <span class="string">标签:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">anzhiyu-icon-tags</span></span><br><span class="line">    <span class="string">网站日志:</span> <span class="string">/changelog/</span> <span class="string">||</span> <span class="string">anzhiyu-icon-clock</span></span><br></pre></td></tr></table></figure>
+<p>这将在&quot;时光&quot;菜单下添加一个&quot;网站日志&quot;菜单项，链接到我们的更新日志页面。</p>
+<h2 id="效果展示"><a class="markdownIt-Anchor" href="#效果展示"></a> 效果展示</h2>
+<p>完成以上步骤后，我们可以通过以下命令生成并预览网站：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean; hexo g; hexo s</span><br></pre></td></tr></table></figure>
+<p>现在，访问 <code>http://localhost:4000/changelog/</code> 就可以看到我们精心设计的网站更新日志页面了。页面效果如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250813165505184.png" alt="网站更新日志页面效果" /></p>
+<p>可以看到，我们的网站更新日志页面采用了时间线的形式，每个更新条目都有清晰的日期（以&quot;年月日&quot;的格式显示）、版本号和更新内容列表。页面整体风格简洁美观，并且添加了悬停效果和动画，提升了用户体验。</p>
+<h2 id="自定义与扩展"><a class="markdownIt-Anchor" href="#自定义与扩展"></a> 自定义与扩展</h2>
+<p>你可以根据自己的需求对更新日志页面进行进一步的自定义：</p>
+<ol>
+<li>
+<p><strong>修改样式</strong>：调整 <code>changelog.pug</code> 文件中的CSS样式，改变页面的颜色、字体、动画效果等。</p>
+</li>
+<li>
+<p><strong>添加更多信息</strong>：在 <code>changelog.yml</code> 文件中添加更多的字段，如重要更新的详细说明、相关链接等。</p>
+</li>
+<li>
+<p><strong>增加筛选功能</strong>：如果更新日志条目较多，可以添加按版本或日期筛选的功能。</p>
+</li>
+<li>
+<p><strong>自定义日期格式</strong>：默认情况下，日期会直接显示 <code>changelog.yml</code> 中的原始格式。如果你想要更友好的日期显示格式，可以在 <code>changelog.pug</code> 文件中添加日期格式化代码，例如将 <code>YYYY-MM-DD</code> 格式转换为 <code>YYYY年MM月DD日</code> 格式：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- var dateObj = new Date(item.date)</span><br><span class="line">- var year = dateObj.getFullYear()</span><br><span class="line">- var month = dateObj.getMonth() + 1</span><br><span class="line">- var day = dateObj.getDate()</span><br><span class="line">- var formattedDate = year + &#x27;年&#x27; + month + &#x27;月&#x27; + day + &#x27;日&#x27;</span><br><span class="line">.changelog-item-date= formattedDate</span><br></pre></td></tr></table></figure>
+<p>这样，即使在 <code>changelog.yml</code> 中使用 <code>2025-08-12</code> 这样的标准日期格式，在页面上也会显示为 <code>2025年8月12日</code>，更加美观易读。</p>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>通过本文的介绍，我们成功地为Hexo博客添加了一个美观实用的网站更新日志页面。这个页面不仅可以记录网站的成长历程，还能展示我们对博客的用心维护，增强用户体验。</p>
+<p>实现这个功能主要涉及以下几个步骤：</p>
+<ol>
+<li>创建页面文件和数据文件</li>
+<li>编写页面布局模板</li>
+<li>修改主题配置，添加菜单项</li>
+<li>美化页面样式</li>
+</ol>
+<p>希望这篇教程对你有所帮助，让你的博客更加丰富多彩！</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812174427471.gif" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812174427471.gif" title="头像" alt="头像"></a><div class="post-copyright__author_name">Penry</div><div class="post-copyright__author_desc">魔刀千刃，只攻不防</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" target="_blank" rel="noopener" href="https://penry.info/article/Hexo-14/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://penry.info/article/Hexo-14/')">第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/reward/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div><div class="reward-link mode"><a class="reward-link-button" href="/wechat/"><i class="anzhiyufont anzhiyu-icon-plant-fill"></i>运营模式与责任</a></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://penry.info/article/Hexo-14/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=第十四篇 Hexo 魔改实录 | 为博客添加一个网站更新日志页面&amp;url=https://penry.info/article/Hexo-14/&amp;pic=/img/top_img/9.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文由Penry原创，转载请注明出处。</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/hexo/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>hexo<span class="tagsPageCount">17</span></a><a class="post-meta__box__tags" href="/tags/%E9%AD%94%E6%94%B9%E5%AE%9E%E5%BD%95/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>魔改实录<span class="tagsPageCount">13</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/21.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/article/Hexo-15/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/11.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第十五篇 Hexo 魔改实录 | 为博客添加文章统计页面</div></div></a></div><div class="next-post pull-right"><a href="/article/Python-Basic-Learning/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/13.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python - 100天从新手到大师</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/article/Hexo-10/" title="第十篇 Hexo 魔改实录 | 为博客添加定位个性欢迎"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/6.gif" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-13</div><div class="title">第十篇 Hexo 魔改实录 | 为博客添加定位个性欢迎</div></div></a></div><div><a href="/article/Hexo-11/" title="第十一篇 Hexo 魔改实录 | 使用 Umami 统计分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/7.gif" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-13</div><div class="title">第十一篇 Hexo 魔改实录 | 使用 Umami 统计分析</div></div></a></div><div><a href="/article/Hexo-12/" title="第十二篇 Hexo 魔改实录 | 主页顶部和底部小动物挂件"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/8.gif" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-13</div><div class="title">第十二篇 Hexo 魔改实录 | 主页顶部和底部小动物挂件</div></div></a></div><div><a href="/article/Hexo-13/" title="第十三篇 Hexo 魔改实录 | 为博客添加直达底部按钮"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/9.gif" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-13</div><div class="title">第十三篇 Hexo 魔改实录 | 为博客添加直达底部按钮</div></div></a></div><div><a href="/article/Hexo-16/" title="第十六篇 Hexo 魔改实录 | 为博客更换字体"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/12.gif" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-14</div><div class="title">第十六篇 Hexo 魔改实录 | 为博客更换字体</div></div></a></div><div><a href="/article/Hexo-15/" title="第十五篇 Hexo 魔改实录 | 为博客添加文章统计页面"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/11.gif" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-14</div><div class="title">第十五篇 Hexo 魔改实录 | 为博客添加文章统计页面</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812174427471.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812155247766.png" alt="status"/></div></div><div class="author-info__description">欢迎来到 Penry 的秘密小屋，希望在这里你能找到需要的知识和教程，也希望能与你分享一些有趣的东西，让我们一起探索这个世界吧！</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">Penry</h1><div class="author-info__desc">魔刀千刃，只攻不防</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/BIT-Penry" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/1253698755" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content"><span>👋🏻 Hi，我是Penry，欢迎你！</span><br> <span>❓ 如有问题欢迎评论区交流！</span><br> <span>😫 页面异常？尝试<kbd>Ctrl</kbd>+<kbd>F5</kbd></span><br> <span>📧 如需联系我：<a href="2772694115@qq.com"><b>发送邮件🚀</b></a></span> <div id="welcome-info"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250708133307721.png) center center / 100% no-repeat"></div></div></div></div><div class="card-widget card-countdown"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div class="cd-count-left">
+  <span class="cd-text">距离</span>
+  <span class="cd-name" id="eventName"></span>
+  <span class="cd-time" id="daysUntil"></span>
+  <span class="cd-date" id="eventDate"></span>
+</div>
+<div id="countRight" class="cd-count-right"></div>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text"> 实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BF%85%E8%A6%81%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text"> 创建必要文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text"> 创建页面文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text"> 创建数据文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B8%83%E5%B1%80%E6%A8%A1%E6%9D%BF"><span class="toc-number">4.</span> <span class="toc-text"> 创建布局模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text"> 修改主题配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text"> 效果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%89%A9%E5%B1%95"><span class="toc-number">7.</span> <span class="toc-text"> 自定义与扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text"> 总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/article/test-1/" title="测试文稿"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/21.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="测试文稿"/></a><div class="content"><a class="title" href="/article/test-1/" title="测试文稿">测试文稿</a><time datetime="2025-11-12T15:38:44.049Z" title="发表于 2025-11-12 23:38:44">2025-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-4/" title="Lecture 4 - Value Iteration and Policy Iteration"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/17.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lecture 4 - Value Iteration and Policy Iteration"/></a><div class="content"><a class="title" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-4/" title="Lecture 4 - Value Iteration and Policy Iteration">Lecture 4 - Value Iteration and Policy Iteration</a><time datetime="2025-10-12T05:42:46.234Z" title="发表于 2025-10-12 13:42:46">2025-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-3/" title="Lecture 3 - Optimal Policy and Bellman Optimality Equation"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/17.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lecture 3 - Optimal Policy and Bellman Optimality Equation"/></a><div class="content"><a class="title" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-3/" title="Lecture 3 - Optimal Policy and Bellman Optimality Equation">Lecture 3 - Optimal Policy and Bellman Optimality Equation</a><time datetime="2025-10-11T13:06:11.058Z" title="发表于 2025-10-11 21:06:11">2025-10-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-2/" title="Lecture 2 - State Value and Bellman Equation"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/17.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lecture 2 - State Value and Bellman Equation"/></a><div class="content"><a class="title" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-2/" title="Lecture 2 - State Value and Bellman Equation">Lecture 2 - State Value and Bellman Equation</a><time datetime="2025-10-01T11:26:44.015Z" title="发表于 2025-10-01 19:26:44">2025-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-toc/" title="Table of Contents for The Mathematical Principles of Reinforcement Learning"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/17.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Table of Contents for The Mathematical Principles of Reinforcement Learning"/></a><div class="content"><a class="title" href="/article/The-Mathematical-Principles-of-Reinforcement-Learning-toc/" title="Table of Contents for The Mathematical Principles of Reinforcement Learning">Table of Contents for The Mathematical Principles of Reinforcement Learning</a><time datetime="2025-09-30T14:23:08.472Z" title="发表于 2025-09-30 22:23:08">2025-09-30</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2772694115@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7827784797" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812174427471.gif" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/BIT-Penry" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://v.douyin.com/dN01E0Uib4E/" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="workboard"><img class="workSituationImg boardsign" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812162211666.png" alt="具身智能萌新小白，好难好难，求大佬带带~" title="具身智能萌新小白，好难好难，求大佬带带~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/BIT-Penry/BIT-Penry.github.io" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Penry" target="_blank">Penry</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
+    jinrishici.load(result =>{
+      if (true) {
+        const sub = []
+        const content = result.data.content
+        sub.unshift(content)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = result.data.content
+      }
+    })
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/" title="Github">Github</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://dash.cloudflare.com/" title="Cloudflare">Cloudflare</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/" title="PicGo">PicGo</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://twikoo.js.org/" title="Twikoo">Twikoo</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://www.mongodb.com/zh-cn" title="MongoDB">MongoDB</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://vercel.com/" title="Vercel">Vercel</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://www.oplog.cn/qexo/" title="Qexo">Qexo</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">8</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.csdn.net/minpengyuanBITer?spm=1010.2135.3001.10640" title="CSDN"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/logo/CSDN.jpg" alt="CSDN"/><span class="back-menu-item-text">CSDN</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/BIT-Penry/Blog-Image/tree/master" title="Penry 的图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zetman-lz/PicGo@main/jsdelivr.ico" alt="Penry 的图床"/><span class="back-menu-item-text">Penry 的图床</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://lobechat.zetman.top/" title="LobeChat聊天"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zetman-lz/PicGo@main/lobechat.ico" alt="LobeChat聊天"/><span class="back-menu-item-text">LobeChat聊天</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/BIT-Penry/BIT-Template-Course-Report" title="BIT课程论文模版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/logo/BIT.png" alt="BIT课程论文模版"/><span class="back-menu-item-text">BIT课程论文模版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/BIT-Penry/BIT-Template-Experiment-Report" title="BIT实验报告模版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/logo/BIT.png" alt="BIT实验报告模版"/><span class="back-menu-item-text">BIT实验报告模版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">配置</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://docs.anheyu.com/" title="安之鱼"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/cover/Cthulhu1.gif" alt="安之鱼"/><span class="back-menu-item-text">安之鱼</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/charts/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 统计</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 藏宝</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/Warning/"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 警告</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/treasure/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 藏宝阁</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 时光</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/dailynote/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 日记簿</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/changelog/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 网站日志</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于Penry</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3Blue1Brown/" style="font-size: 0.88rem;">3Blue1Brown<sup>1</sup></a><a href="/tags/DeepSeek/" style="font-size: 0.88rem;">DeepSeek<sup>1</sup></a><a href="/tags/LaTex/" style="font-size: 0.88rem;">LaTex<sup>4</sup></a><a href="/tags/PicGo/" style="font-size: 0.88rem;">PicGo<sup>1</sup></a><a href="/tags/Plog/" style="font-size: 0.88rem;">Plog<sup>1</sup></a><a href="/tags/Python/" style="font-size: 0.88rem;">Python<sup>10</sup></a><a href="/tags/Pytorch/" style="font-size: 0.88rem;">Pytorch<sup>6</sup></a><a href="/tags/ROS/" style="font-size: 0.88rem;">ROS<sup>1</sup></a><a href="/tags/VSCode%E9%85%8D%E7%BD%AE/" style="font-size: 0.88rem;">VSCode配置<sup>4</sup></a><a href="/tags/Zotero/" style="font-size: 0.88rem;">Zotero<sup>1</sup></a><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>17</sup></a><a href="/tags/markdown/" style="font-size: 0.88rem;">markdown<sup>1</sup></a><a href="/tags/numpy/" style="font-size: 0.88rem;">numpy<sup>2</sup></a><a href="/tags/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/" style="font-size: 0.88rem;">具身智能<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 0.88rem;">图床<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/" style="font-size: 0.88rem;">工具推荐<sup>6</sup></a><a href="/tags/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" style="font-size: 0.88rem;">常用网站<sup>2</sup></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem; font-weight: 500; color: var(--anzhiyu-lighttext)">强化学习<sup>6</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94/" style="font-size: 0.88rem;">性能对比<sup>2</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/" style="font-size: 0.88rem; font-weight: 500; color: var(--anzhiyu-lighttext)">数学原理<sup>6</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">数学基础<sup>2</sup></a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem; font-weight: 500; color: var(--anzhiyu-lighttext)">机器学习基础<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 0.88rem;">测试<sup>1</sup></a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 0.88rem;">爬虫<sup>1</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 0.88rem;">线性代数<sup>2</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">编程基础<sup>3</sup></a><a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/" style="font-size: 0.88rem;">论文写作<sup>4</sup></a><a href="/tags/%E9%AD%94%E6%94%B9%E5%AE%9E%E5%BD%95/" style="font-size: 0.88rem;">魔改实录<sup>13</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="go-down" type="button" title="直达底部" onclick="anzhiyu.scrollToDest(document.body.scrollHeight, 500)"><i class="anzhiyufont anzhiyu-icon-arrow-down"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/06/2025 21:26:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Penry 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("04/06/2025 21:26:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://penry-1352739541.cos.ap-beijing.myqcloud.com/img/20250812162412188.png";
+        img.title = "下班啦，我就是瓦罗兰特的王，求大佬带我飞~";
+        img.alt = "下班啦，我就是瓦罗兰特的王，求大佬带我飞~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.cbd.int/katex@0.16.0/dist/katex.min.css"><script src="https://cdn.cbd.int/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    anzhiyu.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://www.penry.asia/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.41/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://www.penry.asia/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline01-henna.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
+      if (false) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://www.penry.asia/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.41/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/static/countdown.js"></script><script src="/static/card-welcome.js"></script><script src="/static/footer-animal.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.9.0-rc.1/echarts.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
