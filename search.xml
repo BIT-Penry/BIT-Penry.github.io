@@ -53,13 +53,13 @@
             
             <tag> 工具推荐 </tag>
             
-            <tag> Mac </tag>
-            
             <tag> Hexo </tag>
             
             <tag> 博客迁移 </tag>
             
             <tag> Windows </tag>
+            
+            <tag> Mac </tag>
             
         </tags>
       
@@ -791,9 +791,9 @@
       
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 工具推荐 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> Plog </tag>
             
