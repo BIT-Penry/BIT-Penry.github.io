@@ -25,9 +25,33 @@ const insertAnnouncementComponent = () => {
 const getWelcomeInfoElement = () => document.querySelector('#welcome-info');
 
 const fetchIpData = async () => {
-    const response = await fetch(`https://api.nsmao.net/api/ip/query?key=${encodeURIComponent(IP_CONFIG.API_KEY)}`);
-    if (!response.ok) throw new Error('网络响应不正常');
-    return await response.json();
+    try {
+        const apiUrl = `https://api.nsmao.net/api/ip/query?key=${encodeURIComponent(IP_CONFIG.API_KEY)}`;
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('API响应错误:', response.status, errorText);
+            throw new Error(`API响应错误: ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // 检查API返回的数据格式
+        if (!data || !data.data) {
+            console.error('API返回数据格式异常:', data);
+            throw new Error('API返回数据格式异常，请检查API密钥是否有效');
+        }
+        
+        return data;
+    } catch (error) {
+        console.error('获取IP信息失败:', error);
+        // 如果是网络错误，提供更详细的提示
+        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+            throw new Error('网络连接失败，请检查网络或API服务是否可用');
+        }
+        throw error;
+    }
 };
 
 const showWelcome = ({
@@ -233,7 +257,18 @@ const fetchIpInfo = async () => {
         showWelcome(data);
     } catch (error) {
         console.error('获取IP信息失败:', error);
-        showErrorMessage();
+        // 显示更详细的错误信息
+        let errorMsg = '抱歉，无法获取信息';
+        if (error.message) {
+            if (error.message.includes('API密钥')) {
+                errorMsg = 'API密钥无效，请重新申请密钥';
+            } else if (error.message.includes('网络连接')) {
+                errorMsg = '网络连接失败，请检查网络';
+            } else {
+                errorMsg = error.message;
+            }
+        }
+        showErrorMessage(errorMsg);
     }
 };
 
