@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>RTX 5090 笔记本 Ubuntu 深度学习环境配置全指南</title>
+      <link href="/article/Tools-5/"/>
+      <url>/article/Tools-5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="踩坑记录rtx-5090-笔记本-ubuntu-深度学习环境配置全指南解决-hdmi-黑屏与-cublas-报错"><a class="markdownIt-Anchor" href="#踩坑记录rtx-5090-笔记本-ubuntu-深度学习环境配置全指南解决-hdmi-黑屏与-cublas-报错"></a> 【踩坑记录】RTX 5090 笔记本 Ubuntu 深度学习环境配置全指南：解决 HDMI 黑屏与 cuBLAS 报错</h1><h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2><p>最近入手了搭载 <strong>NVIDIA RTX 5090 Laptop</strong> 的新笔记本，本以为装好 Ubuntu 驱动就能直接起飞，结果遭遇了“混合显卡黑屏”、“HDMI 外接显示器不亮”、“PyTorch 运行大矩阵运算报错”等一系列连环坑。</p><p>经过漫长的排查，终于从驱动底层到环境变量彻底跑通。为了避免大家重蹈覆辙，特此记录这套 <strong>目前最稳定、性能无损的解决方案</strong>。</p><hr /><h2 id="环境信息"><a class="markdownIt-Anchor" href="#环境信息"></a> 环境信息</h2><ul><li><strong>硬件</strong>：RTX 5090 Laptop (Blackwell 架构)</li><li><strong>系统</strong>：Ubuntu 22.04 / 24.04</li><li><strong>驱动版本</strong>：NVIDIA Driver 580.x (Proprietary/闭源版)</li><li><strong>核心问题</strong>：<ol><li><code>prime-select on-demand</code> 模式下外接 HDMI 无法点亮</li><li>PyTorch 大模型/大矩阵乘法报错：<code>RuntimeError: CUDA error: CUBLAS_STATUS_NOT_INITIALIZED</code></li><li>显卡频繁休眠导致代码冷启动超时</li></ol></li></ul><hr /><h2 id="解决方案汇总gold-standard"><a class="markdownIt-Anchor" href="#解决方案汇总gold-standard"></a> 解决方案汇总（Gold Standard）</h2><h3 id="第一步切换显卡模式解决-hdmi-与基础稳定性"><a class="markdownIt-Anchor" href="#第一步切换显卡模式解决-hdmi-与基础稳定性"></a> 第一步：切换显卡模式（解决 HDMI 与基础稳定性）</h3><p>RTX 5090 等高性能本的 HDMI 接口通常物理直连独显。在 Linux 的混合模式（On-Demand）下，驱动对新硬件的调度尚不完善，容易导致黑屏或接口不供电。</p><p><strong>操作：切换为独显直连模式 (NVIDIA-only)</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> prime-select nvidia</span><br><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure><blockquote><p><strong>效果</strong>：重启后，HDMI 外接显示器即插即用，不再需要折腾 <code>xrandr</code> 或修改 GRUB 参数。</p></blockquote><hr /><h3 id="第二步禁用-gsp-固件解决驱动兼容性-bug"><a class="markdownIt-Anchor" href="#第二步禁用-gsp-固件解决驱动兼容性-bug"></a> 第二步：禁用 GSP 固件（解决驱动兼容性 Bug）</h3><p><strong>原因</strong>：NVIDIA 在新显卡中引入了 GSP (GPU System Processor) 协处理器来管理电源和调度。但在目前的 Linux 驱动（580 版）下，GSP 在高负载场景极不稳定，是 <code>cuBLAS</code> 初始化报错的元凶之一。让 CPU 接管调度是目前最稳的方案。</p><p><strong>操作：通过 Modprobe 永久禁用 GSP</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/modprobe.d/nvidia-gsp.conf</span><br><span class="line"><span class="comment"># 写入</span></span><br><span class="line">options nvidia NVreg_EnableGpuFirmware=0</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> update-initramfs -u</span><br><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure><p><strong>验证</strong>：<code>grep &quot;EnableGpuFirmware&quot; /proc/driver/nvidia/params</code> 应为 <code>0</code>。</p><hr /><h3 id="第三步开启持久化模式解决显卡睡死问题"><a class="markdownIt-Anchor" href="#第三步开启持久化模式解决显卡睡死问题"></a> 第三步：开启持久化模式（解决显卡“睡死”问题）</h3><p><strong>原因</strong>：笔记本显卡的省电策略非常激进。PyTorch 突然发起计算请求时，显卡从“深度休眠”唤醒需要时间，容易导致初始化超时。需强制显卡保持在线。</p><p><strong>操作：使用 <code>rc.local</code> 设置开机自启</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/rc.local</span><br></pre></td></tr></table></figure><p>写入（在 <code>exit 0</code> 之前）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">/usr/bin/nvidia-smi -pm 1</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x /etc/rc.local</span><br><span class="line"><span class="built_in">sudo</span> /etc/rc.local   <span class="comment"># 手动激活一次</span></span><br></pre></td></tr></table></figure><p><strong>检查</strong>：<code>nvidia-smi</code> 中 <code>Persistence-M</code> 显示 <code>On</code>。</p><hr /><h3 id="第四步清理环境变量解决-library-conflict-终极杀手"><a class="markdownIt-Anchor" href="#第四步清理环境变量解决-library-conflict-终极杀手"></a> 第四步：清理环境变量（解决 Library Conflict 终极杀手）</h3><p><strong>原因</strong>：系统里残留旧版 CUDA 库且 <code>.bashrc</code> 设置了 <code>LD_LIBRARY_PATH</code>，会强制加载错误的底层库，与 5090 不兼容。</p><p><strong>操作：移除 <code>LD_LIBRARY_PATH</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br><span class="line"><span class="comment"># 注释掉所有 LD_LIBRARY_PATH 设置</span></span><br><span class="line"><span class="comment"># export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="comment"># 或当前终端测试：unset LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure><blockquote><p>现在的 Conda / PyTorch 依赖管理已足够智能，手动设 <code>LD_LIBRARY_PATH</code> 往往引发“库地狱”。</p></blockquote><hr /><h2 id="避坑指南不需要做的操作"><a class="markdownIt-Anchor" href="#避坑指南不需要做的操作"></a> 避坑指南：不需要做的操作</h2><p>这些“偏方”会降低性能，请勿使用：</p><ul><li>❌ 设置 <code>NVIDIA_DISABLE_PINNED_MEMORY=1</code>（会禁用锁页内存，拖慢 CPU→GPU 传输）</li><li>❌ 在代码里 <code>allow_tf32 = False</code>（会关闭 Tensor Core 的 TF32 加速，浪费 5090 算力）</li></ul><hr /><h2 id="最终验证脚本"><a class="markdownIt-Anchor" href="#最终验证脚本"></a> 最终验证脚本</h2><p>配置完成后，用下列脚本做压力测试，<code>20000x20000</code> 矩阵乘法能跑通即为成功。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;LD_LIBRARY_PATH&quot;</span> <span class="keyword">in</span> os.environ:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;⚠️ 警告：检测到 LD_LIBRARY_PATH，如报错请尝试 unset 该变量&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;显卡型号: <span class="subst">&#123;torch.cuda.get_device_name(<span class="number">0</span>)&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;显存大小: <span class="subst">&#123;torch.cuda.get_device_properties(<span class="number">0</span>).total_memory / <span class="number">1024</span>**<span class="number">3</span>:<span class="number">.2</span>f&#125;</span> GB&quot;</span>)</span><br><span class="line"></span><br><span class="line">    x = torch.randn(<span class="number">20000</span>, <span class="number">20000</span>, device=<span class="string">&quot;cuda&quot;</span>)</span><br><span class="line">    y = torch.randn(<span class="number">20000</span>, <span class="number">20000</span>, device=<span class="string">&quot;cuda&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;🚀 开始计算大矩阵 (Warm-up + Compute)...&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        start = time.time()</span><br><span class="line">        z = torch.matmul(x, y)</span><br><span class="line">        torch.cuda.synchronize()</span><br><span class="line">        end = time.time()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;✅ 计算成功！耗时: <span class="subst">&#123;end - start:<span class="number">.4</span>f&#125;</span> 秒&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;🎉 恭喜！深度学习环境配置完美！&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;❌ 计算失败: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;❌ 未检测到 GPU&quot;</span>)</span><br></pre></td></tr></table></figure><hr /><h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2><p>RTX 5090 虽然性能强悍，但在 Linux 下驱动调校还需时日。通过 <strong>独显模式 + 禁用 GSP + 持久化模式 + 清理环境变量</strong> 这一套“黄金配置”，可以彻底解决 HDMI 黑屏、cuBLAS 初始化失败、显卡休眠等问题。希望这篇文章能帮到后来者。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> Ubuntu </tag>
+            
+            <tag> GPU </tag>
+            
+            <tag> NVIDIA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac 上配置 LaTeX 编译环境完整指南：从零到 VS Code 完美集成</title>
       <link href="/article/LaTeX-4/"/>
       <url>/article/LaTeX-4/</url>
@@ -27,31 +58,6 @@
             <tag> 工具推荐 </tag>
             
             <tag> Mac </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo 博客从 Windows 迁移到 Mac 完整指南</title>
-      <link href="/article/Tools-5/"/>
-      <url>/article/Tools-5/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具推荐 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 工具推荐 </tag>
             
         </tags>
       
