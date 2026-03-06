@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>《Mathematical Foundations of Deep Learning》</title>
+      <link href="/article/Mathematical-Foundations-of-Deep-Learning/"/>
+      <url>/article/Mathematical-Foundations-of-Deep-Learning/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> 线性代数 </tag>
+            
+            <tag> 数学基础 </tag>
+            
+            <tag> 概率论 </tag>
+            
+            <tag> 凸优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深度学习笔记 - Softmax反向传播梯度计算推导过程</title>
       <link href="/article/DL-1/"/>
       <url>/article/DL-1/</url>
