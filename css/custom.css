@@ -1,0 +1,536 @@
+/* ==========================================================================
+   PenryBlog Custom Styles
+   - 标题方案 A：修复 .markdownIt-Anchor 误伤 + 左侧圆角主题色条层次风
+   - 行内代码：浅底细边框现代文档胶囊风（亮/暗双模式自适应）
+   - 代码块与顶部栏：macOS 质感标题栏 + Maple Mono NF CN + 平滑渐隐展开遮罩
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 修复 markdown-it-plus 锚点造成的标题前 "_" 问题 & 悬停右侧 "#" 锚点
+   -------------------------------------------------------------------------- */
+#article-container a.markdownIt-Anchor {
+  border-bottom: none !important;
+  padding: 0 0 0 0.45rem !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: var(--anzhiyu-secondtext) !important;
+  font-family: "Maple Mono NF CN", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-style: normal !important;
+  font-weight: 500;
+  font-size: 0.78em;
+  line-height: inherit;
+  float: right;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+#article-container a.markdownIt-Anchor::before {
+  content: "#";
+}
+
+#article-container h1:hover a.markdownIt-Anchor,
+#article-container h2:hover a.markdownIt-Anchor,
+#article-container h3:hover a.markdownIt-Anchor,
+#article-container h4:hover a.markdownIt-Anchor,
+#article-container h5:hover a.markdownIt-Anchor,
+#article-container h6:hover a.markdownIt-Anchor {
+  opacity: 0.42;
+}
+
+#article-container a.markdownIt-Anchor:hover {
+  opacity: 1 !important;
+  color: var(--anzhiyu-main) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. 标题字体统一为钉钉进步体 + 文章多级标题美化（方案 A：左侧色条层次风）
+   -------------------------------------------------------------------------- */
+#recent-posts > .recent-post-item .recent-post-info .article-title,
+#post-info .post-title,
+#page h1.page-title,
+#aside-content .item-headline,
+.card-widget .item-headline,
+#article-container.post-content h1,
+#article-container.post-content h2,
+#article-container.post-content h3 {
+  font-family: "DingTalk-JinBuTi", "MiSans", -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-weight: normal;
+}
+
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+  position: relative;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+/* 重置主题 beautify 对 heading::before 的负左偏移 */
+#article-container.post-content h1::before,
+#article-container.post-content h2::before,
+#article-container.post-content h3::before,
+#article-container.post-content h4::before,
+#article-container.post-content h5::before,
+#article-container.post-content h6::before {
+  margin-left: 0 !important;
+  font-size: inherit !important;
+}
+
+/* H1：主色圆角粗竖条（微倾 7° 顺应钉钉进步体倾角） */
+#article-container.post-content h1 {
+  font-size: 1.65em;
+  margin: 2rem 0 1.1rem;
+  padding-left: 0.9rem;
+}
+
+#article-container.post-content h1::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.18em;
+  bottom: 0.18em;
+  width: 4.5px;
+  border-radius: 999px;
+  background: var(--anzhiyu-main);
+  transform: skewX(-7deg);
+}
+
+/* H2：顶部柔和虚线分隔（通过 ::after 实现，避免竖条错位）+ 左侧主题色圆角竖条 */
+#post #article-container.post-content h2 {
+  font-size: 1.42em;
+  margin: 2.3rem 0 1rem;
+  padding: 0 0 0 0.85rem !important;
+  border-top: none !important;
+}
+
+#post #article-container.post-content > :first-child:is(h2) {
+  margin-top: 0.4rem;
+}
+
+#post #article-container.post-content h2::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.18em;
+  bottom: 0.18em;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--anzhiyu-main);
+  transform: skewX(-7deg);
+}
+
+#post #article-container.post-content h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1.15rem;
+  border-top: 1px dashed var(--anzhiyu-theme-op);
+  pointer-events: none;
+}
+
+#post #article-container.post-content > :first-child:is(h2)::after {
+  display: none;
+}
+
+/* H3：较细半透明主题色竖条，形成清晰视觉降级 */
+#article-container.post-content h3 {
+  font-size: 1.2em;
+  margin: 1.45rem 0 0.75rem;
+  padding-left: 0.72rem;
+}
+
+#article-container.post-content h3::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.24em;
+  bottom: 0.24em;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--anzhiyu-main);
+  opacity: 0.55;
+  transform: skewX(-7deg);
+}
+
+/* H4-H6：简洁克制，使用 MiSans 粗体保持小层级清晰 */
+#article-container.post-content h4 {
+  font-size: 1.06em;
+  margin: 1.2rem 0 0.6rem;
+  padding-left: 0;
+  font-weight: 600;
+}
+
+#article-container.post-content h5 {
+  font-size: 0.98em;
+  margin: 1rem 0 0.5rem;
+  padding-left: 0;
+  font-weight: 600;
+}
+
+#article-container.post-content h6 {
+  font-size: 0.92em;
+  margin: 0.9rem 0 0.45rem;
+  padding-left: 0;
+  font-weight: 600;
+  color: var(--anzhiyu-secondtext);
+}
+
+#article-container.post-content h4::before,
+#article-container.post-content h5::before,
+#article-container.post-content h6::before {
+  content: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. 行内代码小框美化（浅底细边框柔和胶囊，兼容亮/暗双模式）
+   -------------------------------------------------------------------------- */
+#article-container :not(pre) > code {
+  font-family: "Maple Mono NF CN", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.86em;
+  font-weight: 500;
+  padding: 0.14em 0.46em;
+  margin: 0 0.18em;
+  border-radius: 6px;
+  line-height: 1.5;
+  box-shadow: none !important;
+  background: #eff3f8;
+  background: color-mix(in srgb, var(--anzhiyu-main) 8%, var(--anzhiyu-secondbg));
+  color: var(--anzhiyu-main);
+  border: 1px solid rgba(66, 90, 239, 0.16);
+  border-color: color-mix(in srgb, var(--anzhiyu-main) 18%, transparent);
+  font-variant-ligatures: contextual;
+  vertical-align: baseline;
+}
+
+[data-theme="dark"] #article-container :not(pre) > code {
+  background: #272932;
+  background: color-mix(in srgb, var(--anzhiyu-main) 14%, #252730);
+  color: #f4cb76;
+  color: color-mix(in srgb, var(--anzhiyu-main) 78%, #ffffff);
+  border-color: rgba(242, 185, 75, 0.24);
+  border-color: color-mix(in srgb, var(--anzhiyu-main) 26%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   4. 代码块容器、顶部栏（红黄绿圆点 + 语言标签 + 按钮）与代码排版美化
+   -------------------------------------------------------------------------- */
+:root {
+  --hl-color: #334155;
+}
+
+[data-theme="dark"] {
+  --hl-color: rgba(241, 245, 249, 0.86);
+  --hl-bg: #16181f;
+}
+
+#article-container figure.highlight {
+  margin: 1.2rem 0 1.6rem !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  box-shadow: 0 6px 20px -8px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04) !important;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+[data-theme="dark"] #article-container figure.highlight {
+  background: #16181f !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 代码块顶部工具栏（macOS 标题栏风格） */
+#article-container figure.highlight .highlight-tools {
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 14px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2) !important;
+  color: #64748b !important;
+  font-family: "Maple Mono NF CN", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-style: normal !important;
+}
+
+[data-theme="dark"] #article-container figure.highlight .highlight-tools {
+  background: linear-gradient(180deg, #242630 0%, #1d1f27 100%) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  color: #94a3b8 !important;
+}
+
+#article-container figure.highlight .highlight-tools.closed {
+  height: 40px !important;
+  border-bottom-color: transparent !important;
+}
+
+/* 左侧红黄绿三圆点更精致 */
+#article-container figure.highlight .highlight-tools::after {
+  left: 15px !important;
+  width: 11px !important;
+  height: 11px !important;
+  background: #ff5f56 !important;
+  box-shadow: 19px 0 #ffbd2e, 38px 0 #27c93f !important;
+}
+
+/* 语言标签（如 BASH / PYTHON）：与正文字体一致，无多余方框 */
+#article-container figure.highlight .highlight-tools .code-lang {
+  left: 76px !important;
+  font-family: "MiSans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+  font-style: normal !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  line-height: 1 !important;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] #article-container figure.highlight .highlight-tools .code-lang {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+}
+
+/* 右侧复制、提示与折叠按钮 */
+#article-container figure.highlight .highlight-tools .copy-button,
+#article-container figure.highlight .highlight-tools .expand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0 !important;
+  border-radius: 6px;
+  color: #64748b;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s ease;
+}
+
+#article-container figure.highlight .highlight-tools .expand {
+  right: 10px !important;
+}
+
+#article-container figure.highlight .highlight-tools .expand ~ .copy-button {
+  right: 42px !important;
+}
+
+#article-container figure.highlight .highlight-tools .expand ~ .copy-notice {
+  right: 76px !important;
+  font-size: 12px;
+  font-family: "MiSans", sans-serif;
+}
+
+#article-container figure.highlight .highlight-tools .copy-button:hover,
+#article-container figure.highlight .highlight-tools .expand:hover {
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--anzhiyu-main);
+}
+
+[data-theme="dark"] #article-container figure.highlight .highlight-tools .copy-button,
+[data-theme="dark"] #article-container figure.highlight .highlight-tools .expand {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] #article-container figure.highlight .highlight-tools .copy-button:hover,
+[data-theme="dark"] #article-container figure.highlight .highlight-tools .expand:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--anzhiyu-main);
+}
+
+/* 代码主体字体：Maple Mono NF CN + 连字 + 舒适行距 */
+#article-container figure.highlight pre,
+#article-container figure.highlight code {
+  font-family: "Maple Mono NF CN", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  font-variant-ligatures: contextual;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 行号栏与代码区留白 */
+#article-container figure.highlight .gutter pre {
+  padding: 12px 11px !important;
+  background: #fafbfd !important;
+  border-right: 1px solid rgba(148, 163, 184, 0.16) !important;
+  color: #94a3b8 !important;
+  min-width: 2.6em;
+}
+
+[data-theme="dark"] #article-container figure.highlight .gutter pre {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-right-color: rgba(255, 255, 255, 0.06) !important;
+  color: #64748b !important;
+}
+
+#article-container figure.highlight .code pre {
+  padding: 12px 16px !important;
+  background: transparent !important;
+}
+
+/* 底部折叠展开遮罩：平滑渐隐，不再硬切文字 */
+#article-container figure.highlight .code-expand-btn {
+  height: 44px !important;
+  padding-top: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(248, 250, 252, 0.92) 48%,
+    #f1f5f9 100%
+  ) !important;
+  border-top: none !important;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+#article-container figure.highlight .code-expand-btn i {
+  color: #64748b !important;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#article-container figure.highlight .code-expand-btn:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(241, 245, 249, 0.96) 45%,
+    #e2e8f0 100%
+  ) !important;
+}
+
+#article-container figure.highlight .code-expand-btn:hover i {
+  color: var(--anzhiyu-main) !important;
+  transform: translateY(2px);
+}
+
+[data-theme="dark"] #article-container figure.highlight .code-expand-btn {
+  background: linear-gradient(
+    180deg,
+    rgba(22, 24, 31, 0) 0%,
+    rgba(22, 24, 31, 0.92) 48%,
+    #1f2129 100%
+  ) !important;
+}
+
+[data-theme="dark"] #article-container figure.highlight .code-expand-btn:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(22, 24, 31, 0) 0%,
+    rgba(29, 31, 39, 0.96) 45%,
+    #282b36 100%
+  ) !important;
+}
+
+[data-theme="dark"] #article-container figure.highlight .code-expand-btn i {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] #article-container figure.highlight .code-expand-btn:hover i {
+  color: var(--anzhiyu-main) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. 正文阅读体验微调（MiSans 中文 + Charter 英文/数字，视觉字号对齐）
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Penry-Latin";
+  src: local("Charter"), local("Charter-Roman"), local("Bitstream Charter"), local("Times New Roman"), local("Georgia");
+  font-weight: 400;
+  font-style: normal;
+  size-adjust: 102%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+2010-2027, U+2030-205E;
+}
+
+@font-face {
+  font-family: "Penry-Latin";
+  src: local("Charter Bold"), local("Charter-Bold"), local("Bitstream Charter Bold"), local("Times New Roman Bold"), local("Georgia Bold");
+  font-weight: 600 700;
+  font-style: normal;
+  size-adjust: 102%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+2010-2027, U+2030-205E;
+}
+
+@font-face {
+  font-family: "Penry-Latin";
+  src: local("Charter Italic"), local("Charter-Italic"), local("Bitstream Charter Italic"), local("Times New Roman Italic"), local("Georgia Italic");
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 102%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+2010-2027, U+2030-205E;
+}
+
+@font-face {
+  font-family: "Penry-Latin";
+  src: local("Charter Bold Italic"), local("Charter-BoldItalic"), local("Bitstream Charter Bold Italic"), local("Times New Roman Bold Italic"), local("Georgia Bold Italic");
+  font-weight: 600 700;
+  font-style: italic;
+  size-adjust: 102%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+2010-2027, U+2030-205E;
+}
+
+/* 全站统一正文与界面字体：Charter（英数）+ MiSans（中文） */
+body,
+#article-container.post-content {
+  font-family: "Penry-Latin", "MiSans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+#article-container.post-content {
+  line-height: 1.82;
+  letter-spacing: 0.01em;
+}
+
+/* 有序列表圆形序号保持无衬线居中 */
+#article-container ol > li::before {
+  font-family: "MiSans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   6. KaTeX 0.10.2 -> 0.16.0 兼容修复与数学公式排版美化
+   (markdown-it-katex 内置 KaTeX 0.10.2 输出 .mathdefault/.mainrm，
+    主题加载的 KaTeX 0.16.0 CSS 已改名为 .mathnormal，导致公式变量全变直立)
+   -------------------------------------------------------------------------- */
+.katex .mathdefault {
+  font-family: KaTeX_Math;
+  font-style: italic;
+}
+
+.katex .mainrm {
+  font-family: KaTeX_Main;
+  font-style: normal;
+}
+
+/* 调整行内公式与中文间距、行间公式呼吸感 */
+#article-container .katex {
+  font-size: 1.08em;
+}
+
+#article-container :not(.katex-display) > .katex {
+  padding: 0 0.14em;
+}
+
+#article-container .katex-display {
+  margin: 1.15em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.3em 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. 关于页个人信息卡片字号自适应（防止长学科名称换行错位）
+   -------------------------------------------------------------------------- */
+#about-page .author-content-item.selfInfo div {
+  margin: 0.5rem 1.25rem 0.5rem 0;
+  min-width: 96px;
+}
+
+#about-page .author-content-item.selfInfo .selfInfo-content {
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.2;
+}
