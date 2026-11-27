@@ -534,3 +534,119 @@ body,
   font-size: clamp(22px, 2vw, 28px);
   line-height: 1.2;
 }
+
+/* --------------------------------------------------------------------------
+   8. 浅色模式白昼背景美学：工程点阵 + 柔和日光弥散流动光斑（方案 A）
+   仅在浅色模式启用，完全不影响深色模式 #universe 星空特效
+   -------------------------------------------------------------------------- */
+html:not([data-theme="dark"]) body:not([data-type="music"]) #web_bg {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  transform: none !important;
+  overflow: hidden;
+  background-color: #f4f7fc !important;
+  background-image:
+    radial-gradient(circle, rgba(66, 90, 239, 0.14) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(244, 247, 252, 0.2) 50%, rgba(238, 243, 253, 0.55) 100%) !important;
+  background-size: 24px 24px, 100% 100% !important;
+  background-position: 0 0, center !important;
+  background-repeat: repeat, no-repeat !important;
+}
+
+html:not([data-theme="dark"]) #web_bg::before,
+html:not([data-theme="dark"]) #web_bg::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* 左上角：晴空蓝与淡紫日光弥散 */
+html:not([data-theme="dark"]) #web_bg::before {
+  width: 62vw;
+  height: 62vw;
+  max-width: 820px;
+  max-height: 820px;
+  top: -22%;
+  left: -14%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(66, 90, 239, 0.13) 0%,
+    rgba(99, 160, 255, 0.09) 42%,
+    rgba(66, 90, 239, 0) 72%
+  );
+  filter: blur(42px);
+  animation: penryDaylightDriftA 26s ease-in-out infinite alternate;
+}
+
+/* 右下角：清透冰青与微暖日光晕 */
+html:not([data-theme="dark"]) #web_bg::after {
+  width: 58vw;
+  height: 58vw;
+  max-width: 780px;
+  max-height: 780px;
+  right: -12%;
+  bottom: -22%;
+  background: radial-gradient(
+    circle at 55% 55%,
+    rgba(56, 189, 248, 0.13) 0%,
+    rgba(251, 191, 36, 0.075) 45%,
+    rgba(56, 189, 248, 0) 72%
+  );
+  filter: blur(46px);
+  animation: penryDaylightDriftB 32s ease-in-out infinite alternate;
+}
+
+/* 深色模式彻底关闭浅色光斑与动画，避免多余 GPU 消耗 */
+[data-theme="dark"] #web_bg::before,
+[data-theme="dark"] #web_bg::after {
+  display: none !important;
+  animation: none !important;
+}
+
+/* 浅色模式下卡片轻微通透，与背后白昼光晕自然融合，同时保持正文高对比度 */
+html:not([data-theme="dark"]) #post,
+html:not([data-theme="dark"]) #page:not(:has(.changelog-page)):not(:has(.charts-page)):not(:has(.hb-desk)),
+html:not([data-theme="dark"]) #page:has(.changelog-page),
+html:not([data-theme="dark"]) #page:has(.charts-page),
+html:not([data-theme="dark"]) #aside-content .card-widget:not(.card-info),
+html:not([data-theme="dark"]) #recent-posts > .recent-post-item {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 26px -14px rgba(15, 23, 42, 0.08);
+}
+
+@keyframes penryDaylightDriftA {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8vw, 6vh, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(3vw, 12vh, 0) scale(0.96);
+  }
+}
+
+@keyframes penryDaylightDriftB {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-7vw, -8vh, 0) scale(1.07);
+  }
+  100% {
+    transform: translate3d(-2vw, -14vh, 0) scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-theme="dark"]) #web_bg::before,
+  html:not([data-theme="dark"]) #web_bg::after {
+    animation: none !important;
+  }
+}
